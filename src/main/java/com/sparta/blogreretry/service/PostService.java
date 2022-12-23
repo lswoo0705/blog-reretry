@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor // 얘가 있어야 레퍼지토리 연결
+@RequiredArgsConstructor // 얘가 있어야 final이 붙어있는 레퍼지토리 필드에 연결
 public class PostService {
     private final PostRepository postRepository;
     public Post createPost(PostCreateRequestDto postCreateRequestDto) {
