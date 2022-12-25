@@ -35,8 +35,8 @@ public class PostController {
     }
 
     // 게시글 수정하기
-//    @PutMapping("/posts/{id}")
-//    public Post updatePost(@RequestBody PostUpdateRequestDto postUpdateRequestDto) {
-//        return postService.
-//    }
+    @PutMapping("/posts/{id}")
+    public Post updatePost(@PathVariable Long id, @RequestBody PostUpdateRequestDto postUpdateRequestDto) {
+        return postService.updatePost(id, postUpdateRequestDto);
+    }
 }

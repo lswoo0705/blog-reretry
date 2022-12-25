@@ -42,7 +42,16 @@ public class PostService {
     }
 
     // 게시글 수정하기
-//    public Post updatePost(PostUpdateRequestDto postUpdateRequestDto) {
-//        Post post =
-//    }
+    public Post updatePost(Long id, PostUpdateRequestDto postUpdateRequestDto) {
+        Post post = postRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("조회하신 아이디의 게시글이 없습니다.")
+        );
+        if (post.isValidPassword(postUpdateRequestDto.getPassword())) {
+            post.updatePost(postUpdateRequestDto);
+            postRepository.save(post);
+        } else {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+        return post;
+    }
 }

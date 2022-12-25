@@ -1,6 +1,7 @@
 package com.sparta.blogreretry.entity;
 
 import com.sparta.blogreretry.dto.PostCreateRequestDto;
+import com.sparta.blogreretry.dto.PostUpdateRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -27,5 +28,19 @@ public class Post extends TimeStamped{
         this.writer = postCreateRequestDto.getWriter();
         this.content = postCreateRequestDto.getContent();
         this.password = postCreateRequestDto.getPassword();
+    }
+
+    public boolean isValidPassword(String inputPassword) {
+        if (inputPassword.equals(this.password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void updatePost(PostUpdateRequestDto postUpdateRequestDto) {
+        this.title = postUpdateRequestDto.getTitle();
+        this.writer = postUpdateRequestDto.getWriter();
+        this.content = postUpdateRequestDto.getContent();
     }
 }
