@@ -54,4 +54,17 @@ public class PostService {
         }
         return post;
     }
+
+    // 게시글 삭제하기
+    public String deletePost(Long id, String password) {
+        Post post = postRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("조회하신 아이디의 게시글이 없습니다.")
+        );
+        if (post.isValidPassword(password)) {
+            postRepository.deleteById(id);
+        } else {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+        return "삭제 완료";
+    }
 }

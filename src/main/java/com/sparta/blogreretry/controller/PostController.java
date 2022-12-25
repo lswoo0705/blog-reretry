@@ -39,4 +39,10 @@ public class PostController {
     public Post updatePost(@PathVariable Long id, @RequestBody PostUpdateRequestDto postUpdateRequestDto) {
         return postService.updatePost(id, postUpdateRequestDto);
     }
+
+    // 게시글 삭제하기
+    @DeleteMapping("/posts/{id}")
+    public String deletePost(@PathVariable Long id, @RequestParam String password) {
+        return postService.deletePost(id, password);
+    }
 }
