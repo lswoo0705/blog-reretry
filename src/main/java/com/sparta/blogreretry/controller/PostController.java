@@ -2,6 +2,7 @@ package com.sparta.blogreretry.controller;
 
 import com.sparta.blogreretry.dto.PostCreateRequestDto;
 import com.sparta.blogreretry.dto.PostInquiryResponseDto;
+import com.sparta.blogreretry.dto.PostUpdateRequestDto;
 import com.sparta.blogreretry.entity.Post;
 import com.sparta.blogreretry.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -26,4 +27,16 @@ public class PostController {
     public List<PostInquiryResponseDto> inquiryAllPost() {
         return postService.inquiryAllPost();
     }
+
+    // 게시글 선택 조회하기
+    @GetMapping("/posts/{id}")
+    public PostInquiryResponseDto inquirySelectPost(@PathVariable Long id) {
+        return postService.inquirySelectPost(id);
+    }
+
+    // 게시글 수정하기
+//    @PutMapping("/posts/{id}")
+//    public Post updatePost(@RequestBody PostUpdateRequestDto postUpdateRequestDto) {
+//        return postService.
+//    }
 }
